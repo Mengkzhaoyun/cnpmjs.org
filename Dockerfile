@@ -1,5 +1,5 @@
-FROM node:6.11
-MAINTAINER Bono Lv <lvscar  {aT} gmail.com>
+FROM registry.ispacesys.cn:5000/public/node:8.0.0-slim
+MAINTAINER Mengkzhaoyun <mengkzhaoyun@gmail.com>
 
 # Working enviroment
 ENV \
@@ -12,12 +12,12 @@ WORKDIR ${CNPM_DIR}
 
 COPY package.json ${CNPM_DIR}
 
-RUN npm set registry https://registry.npm.taobao.org
-
-RUN npm install
+RUN npm set registry https://registry.npm.taobao.org \
+&& npm install \
+&& rm -rf /tmp/* /var/cache/yum/* /root/.npm /root/.node-gyp
 
 COPY .  ${CNPM_DIR}
-COPY docs/dockerize/config.js  ${CNPM_DIR}/config/
+COPY config/config.js  ${CNPM_DIR}/config/
 
 EXPOSE 7001/tcp 7002/tcp
 

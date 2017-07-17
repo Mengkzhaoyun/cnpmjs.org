@@ -137,6 +137,14 @@ var config = {
   // registry url name
   registryHost: 'r.cnpmjs.org',
 
+  // edit by mengkzhaoyun@gmail.com
+  // 2017.07.17
+  // 修改protocol，由于使用反向代理来访问registry，反向代理是http，但是客户端请求的是https，
+  // 这里增加一个全局配置registryProtocol，设置为https，在此生效
+  // registry url protocol
+  registryProtocol: 'http',
+  // end by mengkzhaoyun@gmail.com
+
   /**
    * registry mode config
    */
