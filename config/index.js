@@ -13,7 +13,7 @@ var dataDir = path.join(process.env.HOME || root, '.cnpmjs.org');
 
 var config = {
   version: version,
-  dataDir: dataDir,
+  dataDir: process.env.CNPM_DATA_DIR || dataDir,
 
   /**
    * Cluster mode
